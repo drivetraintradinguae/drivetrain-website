@@ -204,25 +204,44 @@ h4 { font-size: 1rem; font-family: var(--font-body); font-weight: 700; letter-sp
 }
 .topbar__translate { margin-left: auto; }
 
-/* Hide Google Translate default chrome */
-body { top: 0 !important; }
+/* Hide Google Translate's UI completely — we drive it from a custom dropdown */
+#google_translate_element { display: none !important; }
+.goog-te-banner-frame,
 .skiptranslate > iframe { display: none !important; visibility: hidden !important; }
-.goog-te-banner-frame { display: none !important; }
-.goog-te-gadget { font-size: 0 !important; color: transparent !important; }
-.goog-te-gadget .goog-te-combo {
-  font-family: var(--font-body) !important;
-  font-size: 0.8rem !important;
-  color: var(--paper) !important;
-  background: transparent !important;
-  border: 1px solid rgba(255,255,255,0.3) !important;
-  border-radius: 4px !important;
-  padding: 2px 6px !important;
-  margin: 0 !important;
-}
-.goog-te-gadget .goog-te-combo option { color: var(--ink) !important; }
-.goog-te-gadget img { display: none !important; }
+body { top: 0 !important; }
 #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+/* Custom language switcher — shows each language in its own script.
+   Russian speakers see "Русский", Arabs see "العربية", etc. */
+.lang-switcher {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--paper);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 3px 22px 3px 8px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23ffffff' d='M0 0h10L5 6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  transition: border-color 150ms ease;
+}
+.lang-switcher:hover,
+.lang-switcher:focus {
+  border-color: rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+.lang-switcher option {
+  color: var(--ink);
+  background: var(--paper);
+  font-weight: 500;
+}
 
 /* =========================================================
    HEADER / NAV
