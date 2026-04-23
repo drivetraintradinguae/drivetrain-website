@@ -188,17 +188,20 @@ body { top: 0 !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
 
 /* =========================================================
-   HEADER / NAV — sticky, dark brand navy. The horizontal logo
-   is white-on-transparent, so it inherits this background with
-   no seam regardless of what color we pick here.
+   HEADER / NAV — LIGHT theme sticky header. The full-color
+   horizontal logo was designed for light backgrounds and reads
+   perfectly here. Dark topbar above + light header below gives
+   a clean, automotive-retail feel (Tire Rack inspired).
    ========================================================= */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--ink);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--paper);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
 }
 .site-header__inner {
   display: flex;
@@ -209,15 +212,18 @@ body { top: 0 !important; }
 }
 @media (min-width: 768px) { .site-header__inner { padding: 0.6rem var(--s-5); } }
 
-.brand { display: flex; align-items: center; gap: 0.6rem; color: var(--paper); }
-.brand:hover { color: var(--paper); }
+.brand { display: flex; align-items: center; gap: 0.6rem; color: var(--ink); }
+.brand:hover { color: var(--ink); }
 .brand__logo {
   height: 44px;
   width: auto;
-  /* Logo is natively white-on-transparent; inherits the dark header background */
+  /* Full-color logo (black gear + red DT + dark wordmark). Displays
+     natively on the light header — matches designer's intent. */
 }
 .brand__logo--footer {
   height: 52px;
+  /* Footer uses logo-footer.png — the all-white silhouette version that
+     belongs on the dark footer background. */
 }
 @media (min-width: 768px) { .brand__logo { height: 50px; } }
 
@@ -227,13 +233,13 @@ body { top: 0 !important; }
   gap: var(--s-5);
 }
 .nav a {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: color 150ms ease;
 }
-.nav a:hover { color: var(--paper); }
+.nav a:hover { color: var(--red); }
 .nav__cta {
   background: var(--red);
   color: var(--paper) !important;
@@ -250,17 +256,17 @@ body { top: 0 !important; }
   gap: var(--s-2);
 }
 
-/* Language picker — restyled for DARK header context */
+/* Language picker — LIGHT header styling */
 .lang { position: relative; }
 .lang__btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: var(--paper);
+  border: 1px solid var(--line-2);
   border-radius: 999px;
-  color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 600;
@@ -270,11 +276,11 @@ body { top: 0 !important; }
 .lang__btn:hover,
 .lang__btn[aria-expanded="true"] {
   border-color: var(--red);
-  background: rgba(185, 28, 28, 0.2);
+  background: var(--red-soft);
 }
-.lang__globe { width: 15px; height: 15px; color: #fca5a5; flex-shrink: 0; }
+.lang__globe { width: 15px; height: 15px; color: var(--red); flex-shrink: 0; }
 .lang__label { white-space: nowrap; }
-.lang__chev { width: 9px; height: 5px; color: rgba(255,255,255,0.7); flex-shrink: 0; }
+.lang__chev { width: 9px; height: 5px; color: var(--ink-muted); flex-shrink: 0; }
 
 .lang__list {
   position: absolute;
@@ -301,7 +307,7 @@ body { top: 0 !important; }
 }
 .lang__list li:hover { background: var(--red-soft); color: var(--red); }
 
-/* Hamburger — white lines on dark header */
+/* Hamburger — dark lines on light header */
 .nav-toggle {
   display: inline-flex;
   flex-direction: column;
@@ -310,31 +316,31 @@ body { top: 0 !important; }
   width: 40px;
   height: 40px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid var(--line-2);
   border-radius: var(--radius);
   cursor: pointer;
   padding: 0 8px;
 }
-.nav-toggle span { display: block; height: 2px; background: var(--paper); width: 100%; }
+.nav-toggle span { display: block; height: 2px; background: var(--ink); width: 100%; }
 @media (min-width: 960px) { .nav-toggle { display: none; } }
 
-/* MOBILE NAV DRAWER — matches the dark header */
+/* MOBILE NAV DRAWER — light, matching the header */
 .mobile-nav {
   display: flex;
   flex-direction: column;
   padding: var(--s-4);
-  background: var(--ink);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
 }
 .mobile-nav[hidden] { display: none !important; }
 @media (min-width: 960px) { .mobile-nav { display: none !important; } }
 .mobile-nav a {
   padding: 0.875rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
   font-weight: 600;
 }
-.mobile-nav a:hover { color: var(--paper); }
+.mobile-nav a:hover { color: var(--red); }
 .mobile-nav a:last-child { border-bottom: none; }
 .mobile-nav .nav__cta { margin-top: var(--s-3); text-align: center; border: none; color: var(--paper); }
 
