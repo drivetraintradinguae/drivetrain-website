@@ -221,9 +221,21 @@ body { top: 0 !important; }
      natively on the light header — matches designer's intent. */
 }
 .brand__logo--footer {
-  height: 52px;
-  /* Footer uses logo-footer.png — the all-white silhouette version that
-     belongs on the dark footer background. */
+  height: 50px;
+  /* Footer uses the same full-color logo.png, sitting on a subtle
+     white plate (.brand__plate) so every element reads on dark. */
+}
+
+/* White plate behind footer logo — allows the full-color logo to
+   display correctly on the dark footer without color artefacts. */
+.brand__plate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 @media (min-width: 768px) { .brand__logo { height: 50px; } }
 
